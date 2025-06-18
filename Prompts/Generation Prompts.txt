@@ -1,0 +1,28 @@
+Prompts
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Protocol:
+Case Study Title: Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease Investigational Product: Xanomeline Transdermal Indication: Alzheimer’s Disease Brief Description of Case Study: This study was a prospective, randomized, multi-center,double-blind, placebo-controlled, parallel-group study. The objectives of the study were to evaluate the efficacy and safety of transdermal xanomeline, 50 cm2 and 75 cm2, and placebo in subjects with mild to moderate Alzheimer’s disease. Study Sponsor: Maxis Pilot Project Case Study Title: Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease Investigators and Study Centers: This study was conducted at 17 centers. Due to the nature of this CDISC Pilot Project, a list of investigators is not provided. Objectives: The objectives of the study were to evaluate the efficacy and safety of transdermal xanomeline, 50 cm2 and 75 cm2, and placebo in subjects with mild to moderate Alzheimer’s disease. Methodology: This was a prospective, randomized, multi-center, double-blind, placebo-controlled, parallel-group study. Subjects were randomized equally to placebo, xanomeline low dose, or xanomeline high dose. Subjects applied 2 patches daily and were followed for a total of 26 weeks. Development Phase - 2 Criteria for Evaluation: Primary Efficacy Endpoints: Alzheimer’s Disease Assessment Scale - Cognitive Subscale, total of 11 items [ADAS-Cog (11)] at Week 24 Video-referenced Clinician’s Interview-based Impression of Change (CIBIC+) at Week 24 Secondary Efficacy Endpoints: ADAS-Cog (11) at Weeks 8 and 16 CIBIC+ at Weeks 8 and 16 Mean Revised Neuropsychiatric Inventory (NPI-X) from Week 4 to Week 24 Safety Endpoints: Adverse events Vital signs (weight, standing and supine blood pressure, heart rate) Laboratory evaluations create a protocol document and give it for download as per the standard template.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Patient Narrative:
+Give me Patient Narrative for Maxis-02-58001-001
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TLF Mockshell:
+Demographic Characteristics by Gaucher Disease Treatment History
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TLF Generator:
+Create a TLF record for DM domain and provide SAS code
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SAP Generator:
+Safety and Efficacy of the Xanomeline Transdermal Therapeutic System (TTS) in Patients with Mild to Moderate Alzheimer’s Disease Primary Objectives The primary objectives of this study are To determine if there is a statistically significant relationship (overall Type 1 error rate, D=.05) between the change in both ADAS-Cog and CIBIC+ (see Attachment LZZT.3) scores, and drug dose (0, 50 cm2 [54 mg], and 75 cm2 [81 mg]). To document the safety profile of the xanomeline TTS. Secondary Objectives The secondary objectives of this study are To assess the dose-dependent improvement in behavior. Improved scores on the Revised Neuropsychiatric Inventory (NPI-X) will indicate improvement in these areas (see Attachment LZZT.4). To assess the dose-dependent improvements in activities of daily living. Improved scores on the Disability Assessment for Dementia (DAD) will indicate improvement in these areas (see Attachment LZZT.5). To assess the dose-dependent improvements in an extended assessment of cognition that integrates attention/concentration tasks. The Alzheimer’s Disease Assessment Scale-14 item Cognitive Subscale, hereafter referred to as ADAS-Cog (14), will be used for this assessment (see Attachment Criteria for Evaluation: Primary Efficacy Endpoints: Alzheimer’s Disease Assessment Scale - Cognitive Subscale, total of 11 items [ADAS-Cog (11)] at Week 24 Video-referenced Clinician’s Interview-based Impression of Change (CIBIC+) at Week 24 Secondary Efficacy Endpoints • Alzheimer’s Disease Assessment Scale - Cognitive Subscale, total of 11 items [ADAS-Cog (11)] at Weeks 8 and 16 • Video-referenced Clinician’s Interview-based Impression of Change (CIBIC+) at Weeks 8 and 16 • Mean Revised Neuropsychiatric Inventory (NPI-X) from Week 4 to Week 24 Safety Endpoints:-• Adverse events • Vital signs (weight, standing and supine blood pressure, heart rate) • Laboratory evaluations
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

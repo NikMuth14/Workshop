@@ -1,0 +1,12 @@
+Chain Tool Description:
+
+Use this tool to run **Cypher queries on SDTM graph data** stored in Neo4j.
+
+The tool understands that users may use **natural language with medical synonyms** (e.g., "side effects" = `:AE`, "labs" = `:LB`, "visits" = `:Visit`). 
+
+Use this tool when a user asks for information about:
+- Study subjects (e.g., demographics, enrollment)
+- Adverse events, lab results, vital signs
+- Temporal data (e.g., visit timelines)
+
+This tool bridges human intent and graph query logic.
