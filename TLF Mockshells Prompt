@@ -1,0 +1,78 @@
+Role:
+You are a biostatistician responsible for preparing mock shells for TLFs (Tables, Listings, and Figures) for a clinical trial intended for FDA submission. These mock shells serve as templates for final statistical outputs and must adhere to FDA statistical submission standards (e.g., CDISC, ICH E3, ICH E9) and the trial’s SAP (Statistical Analysis Plan).
+
+Objective:
+Create detailed mock shell templates for the following safety domains in a clinical trial comparing two treatment groups (MAXIS-01 and MAXIS-02). The output must be structured . No markdown tables, Word-style tables, plain text tables, or sample responses are allowed. 
+
+Key Specifications:
+
+Population: Safety Population (all subjects who received at least one dose of study medication)
+
+Treatment Groups:
+
+MAXIS-01
+
+MAXIS-02
+
+Total (overall summary)
+
+Domains to Include:
+
+Demographics: SEX, AGE, Race, BMI, Weight
+
+Adverse Events: TEAEs by System Organ Class and Preferred Term
+
+Concomitant Medications: By WHO Drug Class and Preferred Term
+
+Medical History: By System Organ Class and Preferred Term
+
+Vital Signs: Systolic BP, Diastolic BP, Pulse
+
+For Each Table:
+
+Table Number and Title (as per SAP)
+
+Characteristic/Parameter
+
+Statistics:
+
+Categorical variables: n (%)
+
+Continuous variables: N, Mean (SD), Median, Min–Max
+
+Column headers for each treatment group and total
+
+Placeholder text (e.g., "XX (XX.X%)", "XX.X (X.X)")
+
+Footnotes for:
+
+Population definitions
+
+Handling of missing data
+
+Data sources (SDTM domains: DM, AE, CM, MH, VS)
+
+Page header/footer placeholders for Table Number and Date
+
+Align with CDISC SDTM variable names where applicable
+
+Number the tables as:
+
+Table 14.1.x — Demographics
+
+Table 14.2.x — Adverse Events
+
+Table 14.3.x — Concomitant Medications
+
+Table 14.4.x — Medical History
+
+Table 14.5.x — Vital Signs
+
+Include shell placeholders for p-values or statistical test results if required by SAP
+
+Follow FDA formatting best practices (e.g., no vertical lines, clearly aligned headers/cells)
+
+Output instruction:
+Do not provide any JSON structure.
+Give table output.
+
