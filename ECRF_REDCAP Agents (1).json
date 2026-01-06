@@ -1,0 +1,985 @@
+{
+  "nodes": [
+    {
+      "id": "startAgentflow_0",
+      "position": {
+        "x": 380.49033875068835,
+        "y": 277.2928145596183
+      },
+      "data": {
+        "id": "startAgentflow_0",
+        "label": "Start",
+        "version": 1.1,
+        "name": "startAgentflow",
+        "type": "Start",
+        "color": "#7352D5",
+        "hideInput": true,
+        "baseClasses": [
+          "Start"
+        ],
+        "category": "Agent Flows",
+        "description": "Starting point of the agentflow",
+        "inputParams": [
+          {
+            "label": "Input Type",
+            "name": "startInputType",
+            "type": "options",
+            "options": [
+              {
+                "label": "Chat Input",
+                "name": "chatInput",
+                "description": "Start the conversation with chat input"
+              },
+              {
+                "label": "Form Input",
+                "name": "formInput",
+                "description": "Start the workflow with form inputs"
+              }
+            ],
+            "default": "chatInput",
+            "id": "startAgentflow_0-input-startInputType-options",
+            "display": true
+          },
+          {
+            "label": "Form Title",
+            "name": "formTitle",
+            "type": "string",
+            "placeholder": "Please Fill Out The Form",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formTitle-string",
+            "display": false
+          },
+          {
+            "label": "Form Description",
+            "name": "formDescription",
+            "type": "string",
+            "placeholder": "Complete all fields below to continue",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "id": "startAgentflow_0-input-formDescription-string",
+            "display": false
+          },
+          {
+            "label": "Form Input Types",
+            "name": "formInputTypes",
+            "description": "Specify the type of form input",
+            "type": "array",
+            "show": {
+              "startInputType": "formInput"
+            },
+            "array": [
+              {
+                "label": "Type",
+                "name": "type",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "String",
+                    "name": "string"
+                  },
+                  {
+                    "label": "Number",
+                    "name": "number"
+                  },
+                  {
+                    "label": "Boolean",
+                    "name": "boolean"
+                  },
+                  {
+                    "label": "Options",
+                    "name": "options"
+                  }
+                ],
+                "default": "string"
+              },
+              {
+                "label": "Label",
+                "name": "label",
+                "type": "string",
+                "placeholder": "Label for the input"
+              },
+              {
+                "label": "Variable Name",
+                "name": "name",
+                "type": "string",
+                "placeholder": "Variable name for the input (must be camel case)",
+                "description": "Variable name must be camel case. For example: firstName, lastName, etc."
+              },
+              {
+                "label": "Add Options",
+                "name": "addOptions",
+                "type": "array",
+                "show": {
+                  "formInputTypes[$index].type": "options"
+                },
+                "array": [
+                  {
+                    "label": "Option",
+                    "name": "option",
+                    "type": "string"
+                  }
+                ]
+              }
+            ],
+            "id": "startAgentflow_0-input-formInputTypes-array",
+            "display": false
+          },
+          {
+            "label": "Ephemeral Memory",
+            "name": "startEphemeralMemory",
+            "type": "boolean",
+            "description": "Start fresh for every execution without past chat history",
+            "optional": true,
+            "id": "startAgentflow_0-input-startEphemeralMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Flow State",
+            "name": "startState",
+            "description": "Runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "string",
+                "placeholder": "Foo"
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "placeholder": "Bar",
+                "optional": true
+              }
+            ],
+            "id": "startAgentflow_0-input-startState-array",
+            "display": true
+          },
+          {
+            "label": "Persist State",
+            "name": "startPersistState",
+            "type": "boolean",
+            "description": "Persist the state in the same session",
+            "optional": true,
+            "id": "startAgentflow_0-input-startPersistState-boolean",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "startInputType": "chatInput",
+          "formTitle": "",
+          "formDescription": "",
+          "formInputTypes": "",
+          "startEphemeralMemory": "",
+          "startState": "",
+          "startPersistState": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "startAgentflow_0-output-startAgentflow",
+            "label": "Start",
+            "name": "startAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 101,
+      "height": 66,
+      "positionAbsolute": {
+        "x": 380.49033875068835,
+        "y": 277.2928145596183
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "agentAgentflow_1",
+      "position": {
+        "x": 896.6436977752795,
+        "y": 97.97585405433762
+      },
+      "data": {
+        "id": "agentAgentflow_1",
+        "label": "Agent 1",
+        "version": 1,
+        "name": "agentAgentflow",
+        "type": "Agent",
+        "color": "#7352D5",
+        "baseClasses": [
+          "Agent"
+        ],
+        "category": "Agent Flows",
+        "description": "Dynamically choose and utilize tools during runtime, enabling multi-step reasoning",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "agentModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "agentAgentflow_1-input-agentModel-asyncOptions",
+            "display": true,
+            "teamInput": true
+          },
+          {
+            "label": "Messages",
+            "name": "agentMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentMessages-array",
+            "display": true
+          },
+          {
+            "label": "Tools",
+            "name": "agentTools",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Tool",
+                "name": "agentSelectedTool",
+                "type": "asyncOptions",
+                "loadMethod": "listTools",
+                "loadConfig": true
+              },
+              {
+                "label": "Require Human Input",
+                "name": "agentSelectedToolRequiresHumanInput",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentTools-array",
+            "display": true,
+            "teamInput": true,
+            "teamInputItems": [
+              {
+                "inputIndex": 0,
+                "agentSelectedTool": "customMCP"
+              }
+            ]
+          },
+          {
+            "label": "Knowledge (Document Stores)",
+            "name": "agentKnowledgeDocumentStores",
+            "type": "array",
+            "description": "Give your agent context about different document sources. Document stores must be upserted in advance.",
+            "array": [
+              {
+                "label": "Document Store",
+                "name": "documentStore",
+                "type": "asyncOptions",
+                "loadMethod": "listStores"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "docStoreDescription",
+                "type": "string",
+                "generateDocStoreDescription": true,
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentKnowledgeDocumentStores-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Vector Embeddings)",
+            "name": "agentKnowledgeVSEmbeddings",
+            "type": "array",
+            "description": "Give your agent context about different document sources from existing vector stores and embeddings",
+            "array": [
+              {
+                "label": "Vector Store",
+                "name": "vectorStore",
+                "type": "asyncOptions",
+                "loadMethod": "listVectorStores",
+                "loadConfig": true
+              },
+              {
+                "label": "Embedding Model",
+                "name": "embeddingModel",
+                "type": "asyncOptions",
+                "loadMethod": "listEmbeddings",
+                "loadConfig": true
+              },
+              {
+                "label": "Knowledge Name",
+                "name": "knowledgeName",
+                "type": "string",
+                "placeholder": "A short name for the knowledge base, this is useful for the AI to know when and how to search for correct information"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "knowledgeDescription",
+                "type": "string",
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentKnowledgeVSEmbeddings-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "agentEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "agentAgentflow_1-input-agentEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "agentMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_1-input-agentMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "agentMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "agentMemoryType": "windowSize"
+            },
+            "id": "agentAgentflow_1-input-agentMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "agentMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "agentMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "agentAgentflow_1-input-agentMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "agentUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_1-input-agentUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "agentReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "agentAgentflow_1-input-agentReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "agentUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "agentAgentflow_1-input-agentUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "agentModel": "awsChatBedrock",
+          "agentMessages": [
+            {
+              "role": "system",
+              "content": "<p>Extract data using the retriever.</p><p>Only query <code>repository_file_chunks</code>.<br>Fetch the attached PDF/Word data using the exact path provided by the user.<br>Do not fetch any protocol files.<br>Example query:<br>SELECT *</p><p>FROM repository_file_chunks</p><p>WHERE \"path\" = '/Trial Documents/Infectious Diseases/Complicated Staphylococcus Aureus Bacteremia/Phase II/NCT04775953/Study Design/Other Documents/POC_sim_identify.pdf';</p><p>Then use redcap to ingest data or metadata.</p><h3>1. ROLE &amp; PURPOSE</h3><p>You are <strong>REDCAP-METADATA-AND-DATA-INGESTION-AGENT</strong>, an expert in clinical trial data standards, REDCap data modeling, and EDC configuration.</p><p>Your purpose is to:</p><ul><li><p><strong>Extract real clinical data from the attached source document (PDF/XLSX/Word)</strong></p></li><li><p><strong>Derive REDCap metadata directly from observed data elements</strong></p></li><li><p><strong>Use the SAME extracted data to populate REDCap domain tables</strong></p></li><li><p><strong>Ensure alignment with the study protocol without inventing or synthesizing values</strong></p></li></ul><p>This agent replaces synthetic data generation with <strong>data-driven ingestion</strong>.</p><hr><h3>2. PRIMARY DATA SOURCE (MANDATORY)</h3><p>You MUST use the attached document as the <strong>authoritative source of record</strong> for actual data values:</p><ul><li><p><code>POC_simulated_followup_MAXIS3.docx</code> (contains tabular clinical data across subjects and timepoints)</p><p>POC_sim_identify</p></li></ul><p>This file includes (but is not limited to):</p><ul><li><p>Subject identifiers (<code>rand_id</code>, <code>study_id</code>)</p></li><li><p>Demographics (age, sex, birth_date)</p></li><li><p>Time-based observations (<code>time</code>)</p></li><li><p>Vital signs</p></li><li><p>Laboratory results</p></li><li><p>Medications</p></li><li><p>Diagnoses</p></li><li><p>Clinical findings (e.g., blood culture, echo report)</p></li></ul><p>⚠️ <strong>Do NOT generate synthetic values if data is present in the source file.</strong></p><hr><h3>3. INPUTS YOU WILL RECEIVE</h3><p>You will always receive:</p><ul><li><p><code>protocol_text</code> – study protocol for structural and domain guidance</p></li><li><p><code>source_pdf</code> – attached clinical data document (actual data)</p></li><li><p><code>requested_domain</code> – target REDCap domain (e.g., DM, VS, LB, CM, MH, AE, etc.)</p></li><li><p><code>batch_size</code> and <code>batch_index</code> – for chunked ingestion</p></li></ul><hr><h3>4. WORKFLOW (STRICT, STEP-WISE)</h3><h4>Step 1: Data Extraction</h4><ul><li><p>Parse the attached PDF/tabular content.</p></li><li><p>Normalize rows into a structured intermediate dataset.</p></li><li><p>Preserve original values exactly (no rounding, no imputation).</p></li></ul><h4>Step 2: Domain Identification</h4><p>Map extracted columns to REDCap domains based on content:</p><p>Data TypeTarget DomainDemographicsDMVital signsVSLabsLBMedicationsCMDiagnoses / ConditionsMHClinical observationsAE / Findings</p><p>If a row maps to multiple domains, <strong>split it logically</strong>, not by duplication.</p><hr><p>4.5 UNIVERSAL DOMAIN IMPORT PRINCIPLE (MANDATORY)</p><p>Import decisions MUST be evidence-based, not completeness-based.</p><p>- If the source file contains any explicit, domain-relevant data for the requested domain, you MUST proceed with import.</p><p>- Do NOT require all expected fields for a domain to be present.</p><p>- Missing attributes are normal and MUST be left blank.</p><p>- Do NOT stop or refuse import due to incomplete clinical details.</p><p>A record is considered valid for import if:</p><p>- A subject identifier (e.g., rand_id) is present, AND</p><p>- At least one domain-relevant data element exists for that record.</p><p>Only return an error if:</p><p>- No domain-relevant data exists in the source after mapping, OR</p><p>- Subject identifiers are missing for all candidate rows.</p><p>If data exists, always proceed with metadata generation and data import.</p><p></p><h3><br>5. METADATA GENERATION (DATA-DRIVEN)</h3><p>Generate REDCap metadata <strong>only from observed data elements</strong>, not assumptions.</p><p>For each variable:</p><ul><li><p>Field name → derived from column meaning</p></li><li><p>Field label → human-readable, protocol-aligned</p></li><li><p>Field type → inferred from observed values (numeric, text, dropdown, date)</p></li><li><p>Validation → inferred from value distribution</p></li><li><p>Units → captured when present in data</p></li><li><p>Required status → inferred from consistency across records</p></li></ul><p>❌ Do NOT invent fields not seen in the data<br>❌ Do NOT infer CDASH variables unless data supports them</p><hr><h3>6. DATA POPULATION RULES</h3><ul><li><p>Use the <strong>same extracted rows</strong> to populate REDCap records</p></li><li><p>Respect <code>rand_id</code> as subject identifier</p></li><li><p>Respect <code>time</code> as visit/timepoint variable when applicable</p></li><li><p>Maintain longitudinal structure (multiple rows per subject allowed)</p></li></ul><p>Batch handling:</p><ul><li><p>Process only rows defined by <code>batch_size</code> and <code>batch_index</code></p></li><li><p>Never re-order rows across batches</p></li></ul><hr><h3>7. PROTOCOL USAGE (CONSTRAINED)</h3><p>The protocol is used ONLY to:</p><ul><li><p>Validate domain existence</p></li><li><p>Confirm allowable data types</p></li><li><p>Confirm visit structure if needed</p></li></ul><p>The protocol is <strong>NOT</strong> used to:</p><ul><li><p>Generate missing data</p></li><li><p>Override actual values</p></li><li><p>Enforce planned sample size</p></li></ul><hr><h3>8. CONSTRAINTS &amp; GUARDRAILS</h3><ul><li><p><strong>NO synthetic data generation</strong></p></li><li><p><strong>NO placeholder values (e.g., TBD, NA, Unknown)</strong></p></li><li><p><strong>NO protocol-based hallucination</strong></p></li><li><p><strong>NO aggregation unless explicitly required</strong></p></li><li><p>Preserve raw values exactly as seen in source</p></li></ul><p>If data is missing in the source → leave the field blank.</p><hr><h3>9. OUTPUT FORMAT (REQUIRED)</h3><p>Return output in two clearly separated sections:</p><h4>A. REDCap Metadata (JSON)</h4><ul><li><p>Field-level metadata for the requested domain only</p></li></ul><h4>B. REDCap Data Payload (JSON)</h4><ul><li><p>Row-level data ready for REDCap import</p></li><li><p>Only data from the current batch</p></li></ul><p>Do NOT include explanations or commentary outside structured output.</p>"
+            }
+          ],
+          "agentTools": [
+            {
+              "agentSelectedTool": "customMCP",
+              "agentSelectedToolRequiresHumanInput": "",
+              "agentSelectedToolConfig": {
+                "mcpServerConfig": "{\n\"url\":\"http://demo-mcp-redcap.maxis-ai.com:5001/sse\"\n}",
+                "mcpActions": "[\"export_metadata\",\"import_metadata\",\"import_records\"]",
+                "agentSelectedTool": "customMCP"
+              }
+            }
+          ],
+          "agentKnowledgeDocumentStores": "",
+          "agentKnowledgeVSEmbeddings": [
+            {
+              "vectorStore": "RepositoryVectorDB",
+              "embeddingModel": "RepositoryVectorEmbeddings",
+              "knowledgeName": "uploaded docs",
+              "knowledgeDescription": "uploaded docs",
+              "returnSourceDocuments": true,
+              "vectorStoreConfig": {
+                "distanceStrategy": "euclidean",
+                "topK": "800",
+                "vectorStore": "RepositoryVectorDB"
+              },
+              "embeddingModelConfig": {
+                "batchSize": 50,
+                "maxRetries": 5,
+                "embeddingModel": "RepositoryVectorEmbeddings"
+              }
+            }
+          ],
+          "agentEnableMemory": true,
+          "agentMemoryType": "conversationSummary",
+          "agentUserMessage": "<p><span class=\"variable\" data-type=\"mention\" data-id=\"agentAgentflow_0\" data-label=\"agentAgentflow_0\" data-mention-suggestion-char=\"{{\">{{ agentAgentflow_0 }}</span> </p>",
+          "agentReturnResponseAs": "userMessage",
+          "agentUpdateState": "",
+          "agentModelConfig": {
+            "credential": "",
+            "region": "us-east-1",
+            "model": "anthropic.claude-3-haiku-20240307-v1:0",
+            "customModel": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+            "streaming": true,
+            "temperature": "0",
+            "max_tokens_to_sample": 200,
+            "allowImageUploads": "",
+            "latencyOptimized": "",
+            "agentModel": "awsChatBedrock"
+          },
+          "undefined": ""
+        },
+        "outputAnchors": [
+          {
+            "id": "agentAgentflow_1-output-agentAgentflow",
+            "label": "Agent",
+            "name": "agentAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 313,
+      "height": 128,
+      "selected": false,
+      "positionAbsolute": {
+        "x": 896.6436977752795,
+        "y": 97.97585405433762
+      },
+      "dragging": false
+    },
+    {
+      "id": "agentAgentflow_0",
+      "position": {
+        "x": 614.7255729278261,
+        "y": 177.99743399893856
+      },
+      "data": {
+        "id": "agentAgentflow_0",
+        "label": "Agent 0",
+        "version": 1,
+        "name": "agentAgentflow",
+        "type": "Agent",
+        "color": "#7352D5",
+        "baseClasses": [
+          "Agent"
+        ],
+        "category": "Agent Flows",
+        "description": "Dynamically choose and utilize tools during runtime, enabling multi-step reasoning",
+        "inputParams": [
+          {
+            "label": "Model",
+            "name": "agentModel",
+            "type": "asyncOptions",
+            "loadMethod": "listModels",
+            "loadConfig": true,
+            "id": "agentAgentflow_0-input-agentModel-asyncOptions",
+            "display": true
+          },
+          {
+            "label": "Messages",
+            "name": "agentMessages",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Role",
+                "name": "role",
+                "type": "options",
+                "options": [
+                  {
+                    "label": "System",
+                    "name": "system"
+                  },
+                  {
+                    "label": "Assistant",
+                    "name": "assistant"
+                  },
+                  {
+                    "label": "Developer",
+                    "name": "developer"
+                  },
+                  {
+                    "label": "User",
+                    "name": "user"
+                  }
+                ]
+              },
+              {
+                "label": "Content",
+                "name": "content",
+                "type": "string",
+                "acceptVariable": true,
+                "generateInstruction": true,
+                "rows": 4
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentMessages-array",
+            "display": true
+          },
+          {
+            "label": "Tools",
+            "name": "agentTools",
+            "type": "array",
+            "optional": true,
+            "array": [
+              {
+                "label": "Tool",
+                "name": "agentSelectedTool",
+                "type": "asyncOptions",
+                "loadMethod": "listTools",
+                "loadConfig": true
+              },
+              {
+                "label": "Require Human Input",
+                "name": "agentSelectedToolRequiresHumanInput",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentTools-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Document Stores)",
+            "name": "agentKnowledgeDocumentStores",
+            "type": "array",
+            "description": "Give your agent context about different document sources. Document stores must be upserted in advance.",
+            "array": [
+              {
+                "label": "Document Store",
+                "name": "documentStore",
+                "type": "asyncOptions",
+                "loadMethod": "listStores"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "docStoreDescription",
+                "type": "string",
+                "generateDocStoreDescription": true,
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentKnowledgeDocumentStores-array",
+            "display": true
+          },
+          {
+            "label": "Knowledge (Vector Embeddings)",
+            "name": "agentKnowledgeVSEmbeddings",
+            "type": "array",
+            "description": "Give your agent context about different document sources from existing vector stores and embeddings",
+            "array": [
+              {
+                "label": "Vector Store",
+                "name": "vectorStore",
+                "type": "asyncOptions",
+                "loadMethod": "listVectorStores",
+                "loadConfig": true
+              },
+              {
+                "label": "Embedding Model",
+                "name": "embeddingModel",
+                "type": "asyncOptions",
+                "loadMethod": "listEmbeddings",
+                "loadConfig": true
+              },
+              {
+                "label": "Knowledge Name",
+                "name": "knowledgeName",
+                "type": "string",
+                "placeholder": "A short name for the knowledge base, this is useful for the AI to know when and how to search for correct information"
+              },
+              {
+                "label": "Describe Knowledge",
+                "name": "knowledgeDescription",
+                "type": "string",
+                "placeholder": "Describe what the knowledge base is about, this is useful for the AI to know when and how to search for correct information",
+                "rows": 4
+              },
+              {
+                "label": "Return Source Documents",
+                "name": "returnSourceDocuments",
+                "type": "boolean",
+                "optional": true
+              }
+            ],
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentKnowledgeVSEmbeddings-array",
+            "display": true
+          },
+          {
+            "label": "Enable Memory",
+            "name": "agentEnableMemory",
+            "type": "boolean",
+            "description": "Enable memory for the conversation thread",
+            "default": true,
+            "optional": true,
+            "id": "agentAgentflow_0-input-agentEnableMemory-boolean",
+            "display": true
+          },
+          {
+            "label": "Memory Type",
+            "name": "agentMemoryType",
+            "type": "options",
+            "options": [
+              {
+                "label": "All Messages",
+                "name": "allMessages",
+                "description": "Retrieve all messages from the conversation"
+              },
+              {
+                "label": "Window Size",
+                "name": "windowSize",
+                "description": "Uses a fixed window size to surface the last N messages"
+              },
+              {
+                "label": "Conversation Summary",
+                "name": "conversationSummary",
+                "description": "Summarizes the whole conversation"
+              },
+              {
+                "label": "Conversation Summary Buffer",
+                "name": "conversationSummaryBuffer",
+                "description": "Summarize conversations once token limit is reached. Default to 2000"
+              }
+            ],
+            "optional": true,
+            "default": "allMessages",
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_0-input-agentMemoryType-options",
+            "display": true
+          },
+          {
+            "label": "Window Size",
+            "name": "agentMemoryWindowSize",
+            "type": "number",
+            "default": "20",
+            "description": "Uses a fixed window size to surface the last N messages",
+            "show": {
+              "agentMemoryType": "windowSize"
+            },
+            "id": "agentAgentflow_0-input-agentMemoryWindowSize-number",
+            "display": false
+          },
+          {
+            "label": "Max Token Limit",
+            "name": "agentMemoryMaxTokenLimit",
+            "type": "number",
+            "default": "2000",
+            "description": "Summarize conversations once token limit is reached. Default to 2000",
+            "show": {
+              "agentMemoryType": "conversationSummaryBuffer"
+            },
+            "id": "agentAgentflow_0-input-agentMemoryMaxTokenLimit-number",
+            "display": false
+          },
+          {
+            "label": "Input Message",
+            "name": "agentUserMessage",
+            "type": "string",
+            "description": "Add an input message as user message at the end of the conversation",
+            "rows": 4,
+            "optional": true,
+            "acceptVariable": true,
+            "show": {
+              "agentEnableMemory": true
+            },
+            "id": "agentAgentflow_0-input-agentUserMessage-string",
+            "display": true
+          },
+          {
+            "label": "Return Response As",
+            "name": "agentReturnResponseAs",
+            "type": "options",
+            "options": [
+              {
+                "label": "User Message",
+                "name": "userMessage"
+              },
+              {
+                "label": "Assistant Message",
+                "name": "assistantMessage"
+              }
+            ],
+            "default": "userMessage",
+            "id": "agentAgentflow_0-input-agentReturnResponseAs-options",
+            "display": true
+          },
+          {
+            "label": "Update Flow State",
+            "name": "agentUpdateState",
+            "description": "Update runtime state during the execution of the workflow",
+            "type": "array",
+            "optional": true,
+            "acceptVariable": true,
+            "array": [
+              {
+                "label": "Key",
+                "name": "key",
+                "type": "asyncOptions",
+                "loadMethod": "listRuntimeStateKeys",
+                "freeSolo": true
+              },
+              {
+                "label": "Value",
+                "name": "value",
+                "type": "string",
+                "acceptVariable": true,
+                "acceptNodeOutputAsVariable": true
+              }
+            ],
+            "id": "agentAgentflow_0-input-agentUpdateState-array",
+            "display": true
+          }
+        ],
+        "inputAnchors": [],
+        "inputs": {
+          "agentModel": "chatOpenAI",
+          "agentMessages": [
+            {
+              "role": "system",
+              "content": "<p>You are a SQL query generator that creates queries to fetch protocol files from a vector database. When a user provides a file path, generate a SQL SELECT statement that queries the repository<em>file</em>chunks table filtering by the exact path provided.</p><h1>Task Details</h1><ul><li><p>Only query the <code>repository_file_chunks</code> table</p></li><li><p>Use the WHERE clause to filter by the \"path\" column</p></li><li><p>Match the exact path string provided by the user</p></li><li><p>Always use single quotes around the path value</p></li><li><p>The path column name should be enclosed in double quotes: \"path\"</p></li></ul><h1>Steps</h1><ol><li><p>Identify the file path provided by the user</p></li><li><p>Construct a SELECT statement targeting all columns (SELECT *)</p></li><li><p>Specify the FROM clause as <code>repository_file_chunks</code></p></li><li><p>Add a WHERE clause that filters \"path\" equal to the provided path</p></li><li><p>Ensure the path value is enclosed in single quotes</p></li></ol><h1>Output Format</h1><p>Output only the SQL query as a single line statement. Do not include any explanations, markdown formatting, or code blocks. The query should follow this exact structure:</p><p>SELECT * FROM repository_file_chunks WHERE \"path\" = '[user<em>provided</em>path]';</p><h1>Examples</h1><p><strong>Example 1:</strong> Input: /Trial Documents/Cardiology/Hypertension/Phase III/Maxis-05/General Documents/protocol.pdf Output: SELECT * FROM repository_file_chunks WHERE \"path\" = '/Trial Documents/Cardiology/Hypertension/Phase III/Maxis-05/General Documents/protocol.pdf';</p><p><strong>Example 2:</strong> Input: /Trial Documents/Oncology/Breast Cancer/Phase II/Study-42/protocol.pdf Output: SELECT * FROM repository_file_chunks WHERE \"path\" = '/Trial Documents/Oncology/Breast Cancer/Phase II/Study-42/protocol.pdf';</p><p><strong>Example 3:</strong> Input: /Research/Neurology/Alzheimers/Phase I/Trial-001/Documents/protocol.pdf Output: SELECT * FROM repository_file_chunks WHERE \"path\" = '/Research/Neurology/Alzheimers/Phase I/Trial-001/Documents/protocol.pdf';</p><h1>Notes</h1><ul><li><p>The path must be preserved exactly as provided, including all forward slashes, spaces, and capitalization</p></li><li><p>Do not modify or validate the path structure</p></li><li><p>Always use double quotes for the column name \"path\" and single quotes for the path value</p></li><li><p>The query should return all columns from matching rows</p></li><li><p>Your job is to only fetch document and pass the dovument forward for more analysis.</p></li></ul>"
+            }
+          ],
+          "agentTools": "",
+          "agentKnowledgeDocumentStores": "",
+          "agentKnowledgeVSEmbeddings": [
+            {
+              "vectorStore": "RepositoryVectorDB",
+              "embeddingModel": "RepositoryVectorEmbeddings",
+              "knowledgeName": "Documents from repository",
+              "knowledgeDescription": "Documents from repository",
+              "returnSourceDocuments": "",
+              "vectorStoreConfig": {
+                "distanceStrategy": "cosine",
+                "topK": "800",
+                "vectorStore": "RepositoryVectorDB"
+              },
+              "embeddingModelConfig": {
+                "batchSize": 50,
+                "maxRetries": 5,
+                "embeddingModel": "RepositoryVectorEmbeddings"
+              }
+            }
+          ],
+          "agentEnableMemory": true,
+          "agentMemoryType": "allMessages",
+          "agentUserMessage": "",
+          "agentReturnResponseAs": "userMessage",
+          "agentUpdateState": "",
+          "agentModelConfig": {
+            "credential": "",
+            "modelName": "gpt-4o-mini",
+            "temperature": "0",
+            "streaming": true,
+            "maxTokens": "",
+            "topP": "",
+            "frequencyPenalty": "",
+            "presencePenalty": "",
+            "timeout": "",
+            "strictToolCalling": "",
+            "stopSequence": "",
+            "basepath": "",
+            "proxyUrl": "",
+            "baseOptions": "",
+            "allowImageUploads": "",
+            "imageResolution": "low",
+            "reasoningEffort": "medium",
+            "agentModel": "chatOpenAI"
+          }
+        },
+        "outputAnchors": [
+          {
+            "id": "agentAgentflow_0-output-agentAgentflow",
+            "label": "Agent",
+            "name": "agentAgentflow"
+          }
+        ],
+        "outputs": {},
+        "selected": false
+      },
+      "type": "agentFlow",
+      "width": 168,
+      "height": 100,
+      "selected": false,
+      "dragging": false,
+      "positionAbsolute": {
+        "x": 614.7255729278261,
+        "y": 177.99743399893856
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "startAgentflow_0",
+      "sourceHandle": "startAgentflow_0-output-startAgentflow",
+      "target": "agentAgentflow_0",
+      "targetHandle": "agentAgentflow_0",
+      "data": {
+        "sourceColor": "#7EE787",
+        "targetColor": "#4DD0E1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "startAgentflow_0-startAgentflow_0-output-startAgentflow-agentAgentflow_0-agentAgentflow_0"
+    },
+    {
+      "source": "agentAgentflow_0",
+      "sourceHandle": "agentAgentflow_0-output-agentAgentflow",
+      "target": "agentAgentflow_1",
+      "targetHandle": "agentAgentflow_1",
+      "data": {
+        "sourceColor": "#4DD0E1",
+        "targetColor": "#4DD0E1",
+        "isHumanInput": false
+      },
+      "type": "agentFlow",
+      "id": "agentAgentflow_0-agentAgentflow_0-output-agentAgentflow-agentAgentflow_1-agentAgentflow_1"
+    }
+  ]
+}
